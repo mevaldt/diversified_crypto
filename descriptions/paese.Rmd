@@ -1,0 +1,47 @@
+---
+output: 
+  html_fragment
+fontsize: 8pt
+---
+  
+# Luis Henrique Zanandréa Paese
+
+<div align='left'>
+  <a href="https://www.linkedin.com/in/lhzpaese/"> 
+    <i class="fa fa-linkedin" style='font-size:20px; margin: 0px 5px; color:#778899;'></i>
+  </a>
+  <a href="https://github.com/paeselhz"> 
+    <i class="fa fa-github" style='font-size:20px; margin: 0px 5px; color:#778899;'></i>
+  </a>
+  <a href="mailto:lhzpaese@gmail.com"> 
+    <i class="fa fa-envelope" style='font-size:20px; margin: 0px 5px; color:#778899;'></i>
+  </a>
+</div>
+  
+<!-- Duas colunas -->
+<div class="col2">
+  
+<div class="descricao">
+  
+### Description
+  
+  I'm a Data Scientist working at the digital initiative from Sicredi, a cooperative credit institution based in Porto Alegre, Brazil. I've had previous experience working as a data scientist for other financial institutions, Portocred and Agibank.
+
+  My previous work relates to the development and deployment of credit scoring models, data mining and ETL routines. Even though I've participated in the creation of a data science pipeline, which automates the routines of data extraction, development of statistical models and the deployment of the solution through an API, my area of expertise comprises the integration of Data Science Techniques and DevOps.
+
+***
+  
+### Interests
+  
+* Machine Learning
+* Statistical Modeling
+* DevOps
+* REST API
+
+***
+  
+</div>
+  
+<img class="foto" src="imgs/paese.jpeg"/>
+  
+</div>

@@ -1,0 +1,46 @@
+---
+output: 
+  html_fragment
+fontsize: 8pt
+---
+  
+# Matheus Maçon
+  
+<div align='left'>
+  <a href="https://www.linkedin.com/in/matheus-ma%C3%A7on-4baaa2150"> 
+    <i class="fa fa-linkedin" style='font-size:20px; margin: 0px 5px; color:#778899;'></i>
+  </a>
+  <a href="https://github.com/maahmacon"> 
+    <i class="fa fa-github" style='font-size:20px; margin: 0px 5px; color:#778899;'></i>
+  </a>
+  <a href="mailto:maahmacon@gmail.com"> 
+    <i class="fa fa-envelope" style='font-size:20px; margin: 0px 5px; color:#778899;'></i>
+  </a>
+</div>
+  
+<!-- Duas colunas -->
+<div class="col2">
+<img class="foto" src="imgs/matheus.jpg"/>
+  
+<div class="descricao">
+  
+### Description
+  
+I'm a Data Scientist, holding a BSc degree at São Paulo School of Economics (FGV).
+
+I have experience in Python and R programming and I've taught these languages for business students, developed a data visualization app for dealing with soccer stats and worked in the pre and post-processing of medical records in a consulting project for an important Brazilian hospital.
+
+***
+    
+### Interests
+    
+* Machine Learning
+* Text Processing
+* Time Series Analysis 
+* Forecasting
+  
+***
+    
+</div>
+  
+</div>

@@ -1,0 +1,45 @@
+---
+output: 
+  html_fragment
+fontsize: 8pt
+---
+  
+# Jéfferson Augusto Colombo
+
+<div align='left'>
+  <a href="https://www.linkedin.com/in/j%C3%A9fferson-a-colombo-1a82b423"> 
+    <i class="fa fa-linkedin" style='font-size:20px; margin: 0px 5px; color:#778899;'></i>
+  </a>
+  <a href="https://github.com/jacolombo"> 
+    <i class="fa fa-github" style='font-size:20px; margin: 0px 5px; color:#778899;'></i>
+  </a>
+  <a href="mailto:jefferson.colombo@fgv.br"> 
+    <i class="fa fa-envelope" style='font-size:20px; margin: 0px 5px; color:#778899;'></i>
+  </a>
+</div>
+  
+<!-- Duas colunas -->
+<div class="col2">
+<img class="foto" src="imgs/jefferson.jpg"/>
+
+<div class="descricao">
+  
+### Description
+  
+  I am currently a Professor of Finance at Sao Paulo School of Economics - FGV EESP, where I teach finance courses at both the graduate and undergraduate levels. I hold a D.Sc. in Applied Economics from the Federal University of Rio Grande do Sul (Brazil), partially realized at the University of Illinois at Urbana-Champaign (UIUC).
+
+***
+  
+### Interests
+  
+* Empirical Finance Applications
+* Corporate Finance
+* Crypto Finance
+* Corporate Governance
+* Business Cycles
+
+***
+  
+</div>
+  
+</div>

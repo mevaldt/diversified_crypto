@@ -1,0 +1,46 @@
+---
+output: 
+  html_fragment
+fontsize: 8pt
+---
+  
+# Renan Xavier Cortes
+
+<div align='left'>
+  <a href="https://www.linkedin.com/in/renan-cortes-a3583a33/"> 
+    <i class="fa fa-linkedin" style='font-size:20px; margin: 0px 5px; color:#778899;'></i>
+  </a>
+  <a href="https://github.com/renanxcortes"> 
+    <i class="fa fa-github" style='font-size:20px; margin: 0px 5px; color:#778899;'></i>
+  </a>
+  <a href="mailto:renanxcortes@gmail.com"> 
+    <i class="fa fa-envelope" style='font-size:20px; margin: 0px 5px; color:#778899;'></i>
+  </a>
+</div>
+  
+<!-- Duas colunas -->
+<div class="col2">
+<img class="foto" src="imgs/renan.jpg"/>
+
+<div class="descricao">
+    
+### Description
+    
+  I'm a Data Scientist working at Agibank, a financial institution based in Porto Alegre, Brazil, engaged mainly with predictive modelling and fraud detection using open-source technologies. Previously, I worked as a Postdoctoral Scholar at the Center for Geospatial Sciences at the University of California, Riverside (UCR) under the supervision of Serge Rey. I am also a Core Developer of the Python Spatial Analysis Library (PySAL).
+
+  I hold a Ph.D. in Economics from the Pontifical Catholic University of Rio Grande do Sul (2017) (with Honorable Mention), a Master's in Statistics from the Federal University of Minas Gerais (2014) and a Bachelor's in Statistics from the Federal University of Rio Grande do Sul (2010). Besides, I also worked as a researcher in statistics at the Statistics and Economics Foundation in southern Brazil for eight years and was a professor of Data Analysis with R at the Data Science and Big Data post-graduation of UniRitter university.
+
+***
+    
+### Interests
+    
+  * Data visualization
+  * Statistical modelling
+  * Open-source technologies 
+  * Spatial Statistics
+  
+***
+    
+</div>
+  
+</div>
