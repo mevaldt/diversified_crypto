@@ -3,8 +3,6 @@
 # Plotly event link 1: https://plot.ly/r/shinyapp-plotly-events/
 # Plotly event link 2: https://plot.ly/r/shiny-coupled-events/
 
-#alteração
-
 shinyServer(function(input, output, session) {
   
   ###############################################.
