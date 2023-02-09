@@ -8,7 +8,7 @@ portfolio_analysis <-
   tabPanel(
     title = "Portfolio Analysis", 
     icon = icon("briefcase"), 
-    value = "portfolio"#,
+    value = "portfolio",
 sidebarLayout(
  sidebarPanel(
    width = 3, # Number of columns
