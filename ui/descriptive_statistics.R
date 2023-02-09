@@ -30,16 +30,16 @@ descriptive_statistics <-
             multiple = F,
             selected = 'Density'
           ),
-        #  dateRangeInput(
-        #    'stats_plots_dates', 
-        #    'Choose the time range: ', 
-        #    start = min(full_data$date), 
-        #    end = (max(full_data$date) - 1), 
-        #    min = min(full_data$date),
-        #    max = (max(full_data$date) - 1), 
-        #    format = "yyyy-mm-dd", 
-        #    startview = "day"
-        #  ),
+         dateRangeInput(
+           'stats_plots_dates',
+           'Choose the time range: ',
+           start = min(full_data$date),
+           end = (max(full_data$date) - 1),
+           min = min(full_data$date),
+           max = (max(full_data$date) - 1),
+           format = "yyyy-mm-dd",
+           startview = "month"
+         ),
           awesomeCheckbox(
             inputId = 'stats_plots_pairwise',
             label   = 'Force Listwise deletion'%>%label.help("lbl_force_listwise_descriptives_plot"),
@@ -84,16 +84,16 @@ descriptive_statistics <-
             options = list(`actions-box` = TRUE),
             multiple = T
           ),
-      #    dateRangeInput(
-      #      'stats_table_dates', 
-      #      'Choose the time range: ', 
-      #      start = min(full_data$date), 
-      #      end = (max(full_data$date) - 1), 
-      #      min = min(full_data$date),
-      #      max = (max(full_data$date) - 1), 
-      #      format = "yyyy-mm-dd", 
-      #      startview = "day"
-      #    ),
+         dateRangeInput(
+           'stats_table_dates',
+           'Choose the time range: ',
+           start = min(full_data$date),
+           end = (max(full_data$date) - 1),
+           min = min(full_data$date),
+           max = (max(full_data$date) - 1),
+           format = "yyyy-mm-dd",
+           startview = "month"
+         ),
           awesomeCheckbox(
             inputId = 'stats_table_pairwise',
             label   = 'Force Listwise deletion'%>%label.help("lbl_force_listwise_descriptives_table"),
