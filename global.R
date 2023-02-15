@@ -24,6 +24,14 @@ library(shinythemes)
 library(shinyWidgets)
 library(shinycssloaders) #devtools::install_github('andrewsali/shinycssloaders')
 #library(rCharts) # devtools::install_github('ramnathv/rCharts')
+# library(shinydashboard)
+library(shinyWidgets)
+#library(shinythemes)
+library(glue)
+library(leaflet)
+#library(rnaturalearth)
+#library(rnaturalearthdata)
+library(sf)
 
 # calling label.help before sourcing ui
 
@@ -42,6 +50,13 @@ spread <- tidyr::spread
 source('util_scripts/fPortfolio_functions.R')
 source('util_scripts/risk_free_rate.R')
 source('util_scripts/get_latest_data.R')
+
+# For backtest
+source(file = 'util_scripts/portfolio_return.R', local = T)
+source(file = 'util_scripts/portfolio_performance.R', local = T)
+source(file = "util_scripts/utils.R", local = T)
+source(file = "util_scripts/get_data.R", local = T)
+#source(file = "util_scripts/generate_weight_input.R", local = T)
 
 # world_map <- readRDS('data/world_map_simplified.rds') # Fetched from http://thematicmapping.org/downloads/world_borders.php and simplified with rmapshaper for increased performance
 
@@ -98,10 +113,31 @@ choices_hierarchical_list <- list(
     pull(name)
 )
 
+# Backtest data base
+#db_symbol_country <- get_symbol_by_country()
+#world <- ne_countries(scale = "medium", returnclass = "sf")
+
+db_symbol_country <- readRDS('data/db_symbol_country.RDS')
+
+sub_db_symbol_country <- function(){
+  db_symbol_country %>% 
+    filter(country == "Brazil", moeda %in% c("curr", "local"))
+}
+
+db_prices <- readRDS('data/db_prices2.RDS') %>% 
+  filter_all(~!is.na(.)) %>% 
+  filter(adjusted > 0)
+
+db_prices_updated <- function(){
+  db_prices %>% 
+    filter(symbol %in% sub_db_symbol_country()$symbol)
+}
+
 ### Loading UI elements
 
 source('ui/landing_page.R')
 source('ui/time_series.R')
 source('ui/portfolio_analysis.R')
 source('ui/descriptive_statistics.R')
+source('ui/backtest.R')
 source('ui/about.R')

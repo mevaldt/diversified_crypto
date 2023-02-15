@@ -26,8 +26,12 @@ shinyServer(function(input, output, session) {
     updateTabsetPanel(session, "intabset", selected = "descriptive")
   })
   
-  observeEvent(input$jump_to_co_mov_tracer, {
-    updateTabsetPanel(session, "intabset", selected = "co_mov_tracer")
+  #observeEvent(input$jump_to_co_mov_tracer, {
+  #  updateTabsetPanel(session, "intabset", selected = "co_mov_tracer")
+  #})
+  
+  observeEvent(input$jump_to_backtest, {
+    updateTabsetPanel(session, "intabset", selected = "backtest")
   })
   
   observeEvent(input$download_activator, {
@@ -48,6 +52,7 @@ shinyServer(function(input, output, session) {
   source('servers/time_series.R', local = TRUE)
   source('servers/portfolios.R', local = TRUE)
   source('servers/descriptives.R', local = TRUE)
+  source('servers/backtest.R', local = TRUE)
   
   
 })

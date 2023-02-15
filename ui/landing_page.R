@@ -120,6 +120,30 @@ landing_page <-
         #     )
         #     )
         # ),
+        #Backtest box
+        column(
+          width = 4, 
+          class = "landing-page-column",
+          div(
+            class = "landing-page-box", 
+            div(
+              "Backtest", 
+              class = "landing-page-box-title"
+            ),
+            div(class = "landing-page-icon", 
+                style = "background-image: url('imgs/placeholder.png');
+                  background-size: auto 80%; 
+                  background-position: center; 
+                  background-repeat: no-repeat;"
+            ),
+            actionButton(
+              'jump_to_backtest', 
+              'Explore how a custom portifolio with cryptocurrencies would\'ve performed in the past',
+              class = "landing-page-button", 
+              icon = icon("arrow-circle-right", "icon-lp")
+            )
+          )
+        ),
         # Download user Guide
         column(
           width = 4, 
