@@ -1,5 +1,7 @@
 # ---- botoes de assets/weights ----
 
+db_prices = full_data
+
 # ---- * first buttons ----
 output$symbol_input_list <-
   renderUI({

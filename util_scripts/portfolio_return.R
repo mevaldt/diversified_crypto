@@ -8,7 +8,7 @@ get_returns <- function(db_prices, assets, period = c('daily', 'monthly', 'quart
     filter(symbol %in% assets) %>% 
     group_by(symbol) %>% 
     tq_transmute(
-      select     = adjusted, 
+      select     = price.adjusted, 
       mutate_fun = periodReturn, 
       period     = period,
       col_rename = "return"

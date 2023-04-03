@@ -1,3 +1,5 @@
+db_prices = full_data
+
 backtest <- 
   tabPanel(
     title = "Backtest", 

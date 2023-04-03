@@ -10,7 +10,7 @@ generate_weight_input <-
   function(symbols, sub_db_symbol_country){
     
     symbols_by_group <- sub_db_symbol_country %>% 
-      filter(symbols %in% symbols) %>% 
+      filter(symbol %in% symbols) %>% 
       select(type, symbol) %>% 
       distinct() %>% 
       ungroup() %>% 
@@ -84,7 +84,7 @@ update_backtest_panel <- function(input, output, session, symbols, rf, sub_db_sy
   #---- * update tickers ----
   
   symbols_by_group <- sub_db_symbol_country %>% 
-    filter(symbols %in% symbols) %>% 
+    filter(symbol %in% symbols) %>% 
     select(type, symbol) %>% 
     distinct() %>% 
     ungroup() %>% 
@@ -138,7 +138,7 @@ update_currency <- function(input, output, session, symbols, sub_db_symbol_count
   #---- * update tickers ----
   
   symbols_by_group <- sub_db_symbol_country %>% 
-    filter(symbols %in% symbols) %>% 
+    filter(symbol %in% symbols) %>% 
     select(type, symbol) %>% 
     distinct() %>% 
     ungroup() %>% 

@@ -120,16 +120,16 @@ choices_hierarchical_list <- list(
 db_symbol_country <- readRDS('data/db_symbol_country.RDS')
 
 sub_db_symbol_country <- function(){
-  db_symbol_country %>% 
-    filter(country == "Brazil", moeda %in% c("curr", "local"))
+  full_data #%>% #db_symbol_country %>% 
+    #filter(country == "Brazil", currency == "USDBRL=X")
 }
 
-db_prices <- readRDS('data/db_prices2.RDS') %>% 
-  filter_all(~!is.na(.)) %>% 
-  filter(adjusted > 0)
+#db_prices <- readRDS('data/db_prices2.RDS') %>% 
+#  filter_all(~!is.na(.)) %>% 
+#  filter(adjusted > 0)
 
 db_prices_updated <- function(){
-  db_prices %>% 
+  full_data %>% #db_prices %>% 
     filter(symbol %in% sub_db_symbol_country()$symbol)
 }
 
