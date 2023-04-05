@@ -1,5 +1,3 @@
-db_prices = full_data
-
 backtest <- 
   tabPanel(
     title = "Backtest", 
@@ -14,10 +12,10 @@ backtest <-
         width = 3,
         dateRangeInput(inputId   = "daterange",
                        label     = "Time Series Interval:",
-                       start     = min(db_prices$date),
-                       end       = max(db_prices$date),
-                       min       = min(db_prices$date),
-                       max       = max(db_prices$date),
+                       start     = min(full_data$date),
+                       end       = max(full_data$date),
+                       min       = min(full_data$date),
+                       max       = max(full_data$date),
                        separator = " - "),
         prettyRadioButtons(inputId      = "rebalance",
                            label        = "Rebalance Schedule:", 

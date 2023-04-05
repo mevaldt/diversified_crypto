@@ -49,19 +49,18 @@ spread <- tidyr::spread
 
 source('util_scripts/fPortfolio_functions.R')
 source('util_scripts/risk_free_rate.R')
-source('util_scripts/get_latest_data.R')
+#source('util_scripts/get_latest_data.R')
 
 # For backtest
 source(file = 'util_scripts/portfolio_return.R', local = T)
 source(file = 'util_scripts/portfolio_performance.R', local = T)
-source(file = "util_scripts/utils.R", local = T)
-source(file = "util_scripts/get_data.R", local = T)
+source(file = "util_scripts/backtest_utils.R", local = T)
+#source(file = "util_scripts/get_data.R", local = T)
 #source(file = "util_scripts/generate_weight_input.R", local = T)
 
 # world_map <- readRDS('data/world_map_simplified.rds') # Fetched from http://thematicmapping.org/downloads/world_borders.php and simplified with rmapshaper for increased performance
 
-full_data <-
-  readRDS('data/full_data.rds')
+full_data <- readRDS('data/full_data.rds')
 
 lst_names <-
   full_data %>% 
@@ -117,21 +116,23 @@ choices_hierarchical_list <- list(
 #db_symbol_country <- get_symbol_by_country()
 #world <- ne_countries(scale = "medium", returnclass = "sf")
 
-db_symbol_country <- readRDS('data/db_symbol_country.RDS')
+#db_symbol_country <- readRDS('data/db_symbol_country.RDS')
 
-sub_db_symbol_country <- function(){
-  full_data #%>% #db_symbol_country %>% 
-    #filter(country == "Brazil", currency == "USDBRL=X")
-}
+full_data <- full_data %>% mutate(rf = case_when(country == "Brasil" ~ "CDI", TRUE ~ "TNX"))
+
+#sub_db_symbol_country <- function(){
+#  db_symbol_country %>% 
+#    filter(country == "Brazil", currency == "USDBRL=X")
+#}
 
 #db_prices <- readRDS('data/db_prices2.RDS') %>% 
 #  filter_all(~!is.na(.)) %>% 
 #  filter(adjusted > 0)
 
-db_prices_updated <- function(){
-  full_data %>% #db_prices %>% 
-    filter(symbol %in% sub_db_symbol_country()$symbol)
-}
+#db_prices_updated <- function(){
+#  full_data %>% #db_prices %>% 
+#    filter(symbol %in% sub_db_symbol_country()$symbol)
+#}
 
 ### Loading UI elements
 
