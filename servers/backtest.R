@@ -7,9 +7,9 @@ output$symbol_input_list <-
       width = 6,
       div(
         id = 'inputs_list',
-        generate_weight_input(unique(full_data$symbol), full_data),  
-        generate_weight_input(unique(full_data$symbol), full_data),  
-        generate_weight_input(unique(full_data$symbol), full_data),  
+        generate_weight_input(unique(db_backtest$symbol), db_backtest),  
+        generate_weight_input(unique(db_backtest$symbol), db_backtest),  
+        generate_weight_input(unique(db_backtest$symbol), db_backtest),  
       ),
       actionBttn(inputId = "add_row",
                  label = "Add +",  
@@ -64,7 +64,7 @@ observeEvent(
     insertUI(
       selector = "div#inputs_list",
       where = "beforeEnd",
-      ui = generate_weight_input(unique(full_data$symbol), full_data)
+      ui = generate_weight_input(unique(db_backtest$symbol), db_backtest)
     )
   }
 )
@@ -75,7 +75,7 @@ output$benchmark_ui <- renderUI({
   pickerInput(
     inputId  = 'benchmark',
     label    = "Benchmark",
-    choices  = c("Porfolio W/O Crypto", unique(full_data$symbol))
+    choices  = c("Porfolio W/O Crypto", unique(db_backtest$symbol))
   )
 })
 #---- risk free button ----
@@ -84,7 +84,7 @@ output$risk_free_ui <- renderUI({
   pickerInput(
     inputId  = 'risk_free_choose',
     label    = "Risk Free",
-    choices  = c(unique(full_data$rf), "Numeric")
+    choices  = c("CDI", "Numeric")
   )
 })
 
@@ -104,10 +104,10 @@ output$risk_free_ui <- renderUI({
 #   
 #   db_prices_updated <- reactive({
 #     db_prices %>% 
-#       filter(symbol %in% full_data$symbol)
+#       filter(symbol %in% db_backtest$symbol)
 #   })
 #   
-#   update_currency(input, output, session, symbols = unique(full_data$symbol), sub_db_symbol_country = full_data)
+#   update_currency(input, output, session, symbols = unique(db_backtest$symbol), sub_db_symbol_country = db_backtest)
 # })
 
 #---- performance ----
@@ -178,7 +178,7 @@ observeEvent(input$gobacktest, {
   
   period_return_choice <- input$period_return
   
-  assets_crypto <- full_data %>% filter(type == 'Crypto Currency') %>% pull(symbol)
+  assets_crypto <- db_backtest %>% filter(type %in% c('Crypto Currency', 'Crypto Index')) %>% pull(symbol) %>% unique()
   
   if(input$benchmark == 'Porfolio W/O Crypto'){
     benchmark_asset <- ativos[!(ativos %in% assets_crypto)]
@@ -190,15 +190,15 @@ observeEvent(input$gobacktest, {
   } 
   
   #---- * returns ----
-  benchmark_returns <- full_data %>% 
-    filter(between(date, left = dt_ini, right = dt_fim)) %>% 
+  db_backtest_filt <- db_backtest %>% filter(between(date, left = dt_ini, right = dt_fim))
+  
+  benchmark_returns <- db_backtest_filt %>% 
     get_returns(assets = benchmark_asset, period = period_return_choice)
   
   benchmark_performance <- get_performance(benchmark_returns, benchmark_asset, benchmark_weights, rebalance = rebalance_choice)
   
   
-  portfolio_returns <- full_data %>% 
-    filter(between(date, left = dt_ini, right = dt_fim)) %>% 
+  portfolio_returns <- db_backtest_filt %>% 
     get_returns(assets = ativos, period = period_return_choice)
   
   portfolio_performance <- get_performance(portfolio_returns, ativos, weights = weights, rebalance = rebalance_choice)

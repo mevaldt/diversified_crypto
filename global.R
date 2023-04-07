@@ -61,6 +61,9 @@ source(file = "util_scripts/backtest_utils.R", local = T)
 # world_map <- readRDS('data/world_map_simplified.rds') # Fetched from http://thematicmapping.org/downloads/world_borders.php and simplified with rmapshaper for increased performance
 
 full_data <- readRDS('data/full_data.rds')
+full_data <- full_data %>% mutate(rf = case_when(country == "Brasil" ~ "CDI", TRUE ~ "TNX"))
+
+db_backtest <- readRDS('data/db_backtest.RDS')
 
 lst_names <-
   full_data %>% 
@@ -117,8 +120,6 @@ choices_hierarchical_list <- list(
 #world <- ne_countries(scale = "medium", returnclass = "sf")
 
 #db_symbol_country <- readRDS('data/db_symbol_country.RDS')
-
-full_data <- full_data %>% mutate(rf = case_when(country == "Brasil" ~ "CDI", TRUE ~ "TNX"))
 
 #sub_db_symbol_country <- function(){
 #  db_symbol_country %>% 
