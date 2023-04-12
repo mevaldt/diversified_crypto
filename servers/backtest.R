@@ -190,7 +190,7 @@ observeEvent(input$gobacktest, {
   } 
   
   #---- * returns ----
-  db_backtest_filt <- db_backtest %>% filter(between(date, left = dt_ini, right = dt_fim))
+  db_backtest_filt <- db_backtest %>% filter(date >= dt_ini & date <= dt_fim)
   
   benchmark_returns <- db_backtest_filt %>% 
     get_returns(assets = benchmark_asset, period = period_return_choice)
@@ -223,7 +223,7 @@ observeEvent(input$gobacktest, {
   #---- * plot performance ----
   output$performance_plot <- renderPlotly({
     db_performance %>% 
-      select(date, portfolio = daily_cum_portfolio, benchmark = daily_cum_benchmark) %>% 
+      select(date, portfolio = daily_cum_portfolio, benchmark = daily_cum_benchmark) %>% #na.omit() %>%
       pivot_longer(cols = c('portfolio', 'benchmark'), names_to = 'return', values_to = 'value') %>% 
       plot_returns()
   })

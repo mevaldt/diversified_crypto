@@ -2,7 +2,7 @@
 db_bloomberg <- readxl::read_excel("data/backtest_bloomberg.xlsx", skip = 3) %>%
   filter(row_number() > 1) %>%
   rename(date = Dates) %>%
-  select(c("date", "NCI Index", "BCOM Index", "IFIX Index", "XFIX11 BZ Equity", "CBRAIMA BZ Equity",
+  select(c("date", "BVSP60 Index",  "NCI Index", "BCOM Index", "IFIX Index", "XFIX11 BZ Equity", "CBRAIMA BZ Equity",
            "IDADDI Index", "IFMMIFMM Index", "IHFAIHFA Index", "USDBRL Curncy", "EURBRL Curncy",
            "XAD Curncy", "XBNUSD Curncy", "XBI Curncy", "XBTUSD Curncy", "EOS Curncy",
            "XETUSD Curncy","XLCUSD Curncy", "XDTUSD Curncy", "XLM Curncy", "XRP Curncy"))
@@ -17,7 +17,8 @@ db_backtest <- left_join(db_bloomberg, db_cci) %>%
   pivot_longer(-date, values_to = "price.adjusted", names_to = "name") %>%
   left_join(readxl::read_excel("data/backtest_metadata.xlsx")) %>%
   mutate(price.adjusted = case_when(currency == "USD" ~ price.adjusted * exchange_rate, TRUE ~ price.adjusted),
-         rf = case_when(country == "Brasil" ~ "CDI", TRUE ~ "TNX"),
+         currency = "BRL",
+         #rf = case_when(country == "Brasil" ~ "CDI", TRUE ~ "TNX"),
          date = as.Date(date))
 
 saveRDS(db_backtest, file = "data/db_backtest.RDS")
@@ -38,9 +39,3 @@ db_backtest %>%
               sum(!is.na(.x$price.close))} %>%
           round(3)) %>%
   set_names(unique(db_backtest$name))
-
-
-
-
-
-
