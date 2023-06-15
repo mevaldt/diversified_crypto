@@ -90,6 +90,21 @@ output$risk_free_ui <- renderUI({
   )
 })
 
+Rf <- 0
+
+observeEvent(input$risk_free_choose, {
+  if (input$risk_free_choose == "CDI") {
+    Rf <- tail(rbcb::get_series(12)$`12`, 1) #%>% {(1+.)^252 - 1} se precisar anualizar o CDI
+  } else {
+    Rf <- input$risk_free_numeric/100
+  }
+})
+
+observeEvent(input$risk_free_numeric, {
+  Rf <- input$risk_free_numeric/100
+})
+
+
 #---- Currency ----
 
 # observeEvent(input$currency, {
@@ -210,12 +225,12 @@ observeEvent(input$gobacktest, {
               by = 'date', suffix = c('_portfolio', '_benchmark')) 
   
   #---- * metrics ----
-  portfolio_metrics <- get_individual_metrics(portfolio_performance) %>% 
+  portfolio_metrics <- get_individual_metrics(portfolio_performance, Rf) %>% 
     mutate(
       portfolio = 'Portfolio'
     )
   
-  benchmark_metrics <- get_individual_metrics(benchmark_performance) %>% 
+  benchmark_metrics <- get_individual_metrics(benchmark_performance, Rf) %>% 
     mutate(
       portfolio = 'Benchmark'
     )

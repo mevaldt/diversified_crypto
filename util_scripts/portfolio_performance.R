@@ -22,7 +22,7 @@ library(tidyquant)
 
 #---- individual metrics ----
 
-get_individual_metrics <- function(portfolio_returns){
+get_individual_metrics <- function(portfolio_returns, Rf = 0){
   
   basic_metrics <- portfolio_returns %>% 
     summarise(
@@ -49,7 +49,8 @@ get_individual_metrics <- function(portfolio_returns){
   
   sharpe <- portfolio_returns %>% 
     tq_performance(Ra = return,
-                   performance_fun = SharpeRatio)
+                   performance_fun = SharpeRatio,
+                   Rf = Rf)
   
   db_metrics <- bind_cols(basic_metrics, annualized_metrics, downside_metrics, var, sharpe) %>% 
     pivot_longer(cols = everything(), names_to = 'metric', values_to = 'value')
