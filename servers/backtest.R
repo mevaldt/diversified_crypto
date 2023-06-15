@@ -11,6 +11,8 @@ output$symbol_input_list <-
         generate_weight_input(unique(db_backtest$symbol), db_backtest),  
         generate_weight_input(unique(db_backtest$symbol), db_backtest),  
       ),
+      tags$br(),
+      align = "center",
       actionBttn(inputId = "add_row",
                  label = "Add +",  
                  style = "minimal",

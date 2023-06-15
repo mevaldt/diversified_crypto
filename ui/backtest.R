@@ -17,28 +17,35 @@ backtest <-
                        min       = min(db_backtest$date),
                        max       = max(db_backtest$date),
                        separator = " - "),
-        prettyRadioButtons(inputId      = "rebalance",
-                           label        = "Rebalance Schedule:", 
-                           choiceValues = c('none', 'years', 'months', 'weeks', 'days'),
-                           choiceNames  = c('None', 'Yearly', 'Monthly', 'Weekly', 'Daily'),
-                           icon         = icon("check"), 
-                           bigger       = TRUE,
-                           status       = "info",
-                           animation    = "jelly"
-        )
+        tags$br(),
+        div(
+          prettyRadioButtons(inputId      = "rebalance",
+                             label        = "Rebalance Schedule:", 
+                             choiceValues = c('none', 'years', 'months', 'weeks', 'days'),
+                             choiceNames  = c('None', 'Yearly', 'Monthly', 'Weekly', 'Daily'),
+                             icon         = icon("check"), 
+                             bigger       = TRUE,
+                             status       = "info",
+                             animation    = "jelly"
+        ),
+        class = "custom-radio-buttons")
       ),
       column(
         width = 3,
         uiOutput("benchmark_ui"),
-        prettyRadioButtons(inputId      = "period_return",
-                           label        = "Returns:", 
-                           choiceValues = c('daily', 'monthly', 'quarterly', 'yearly'),
-                           choiceNames  = c('Daily', 'Monthly', 'Quarterly', 'Yearly'),
-                           icon         = icon("check"), 
-                           bigger       = TRUE,
-                           status       = "info",
-                           animation    = "jelly"
-        )),
+        tags$br(),
+        div(
+          prettyRadioButtons(inputId      = "period_return",
+                             label        = "Returns:", 
+                             choiceValues = c('daily', 'monthly', 'quarterly', 'yearly'),
+                             choiceNames  = c('Daily', 'Monthly', 'Quarterly', 'Yearly'),
+                             icon         = icon("check"), 
+                             bigger       = TRUE,
+                             status       = "info",
+                             animation    = "jelly"
+          ),
+          class = "custom-radio-buttons"),
+      ),
       column(width = 1,
              uiOutput('risk_free_ui'),
              conditionalPanel(
@@ -84,6 +91,8 @@ backtest <-
                                     plotlyOutput("drawdown_plot")
                              ),
                              column(6,
+                                    tags$br(),
+                                    align = "center",
                                     dropdownButton(
                                       tags$h3("Pick"),
                                       numericInput(inputId = "window_sd",
@@ -95,9 +104,10 @@ backtest <-
                                       icon = icon("align-justify"), 
                                       tooltip = tooltipOptions(title = "Click to change rolling-window")
                                     ),
-                                    plotlyOutput("roll_sd_plot"))
+                                    plotlyOutput("roll_sd_plot")
                              )
                     )
         )
       )
+    )
   )

@@ -1,6 +1,8 @@
 # Define UI 
 shinyUI(
   fluidPage(
+    tags$head(tags$style(HTML(".custom-radio-buttons label {margin-bottom: 10px;}"))),
+    tags$head(tags$style(HTML(".custom-dropdown-button {text-align: center; margin-top: 10px;}"))),
     shinyjs::useShinyjs(),
     tags$head(includeHTML('www/google_analytics.html')),
     navbarPage(

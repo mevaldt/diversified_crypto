@@ -8,7 +8,7 @@ landing_page <-
       style = "margin-left:4%; margin-right:4%",
       fluidRow(
         h3(
-          "Welcome to the Crypto Diversifier app!", 
+          "Welcome to the Crypto Diversifier app!",
           style = "margin-top:0px;"
         )
       ),
@@ -131,7 +131,7 @@ landing_page <-
               class = "landing-page-box-title"
             ),
             div(class = "landing-page-icon", 
-                style = "background-image: url('imgs/placeholder.png');
+                style = "background-image: url('imgs/backtest.png');
                   background-size: auto 80%; 
                   background-position: center; 
                   background-repeat: no-repeat;"
